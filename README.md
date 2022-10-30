@@ -3,6 +3,8 @@
 ## 🔨 Tech Stack 🔨
 **Platforms & Languages**
 
+<img src="https://img.shields.io/badge/Android Studio-3DDC84?style=flat&logo=Python&logoColor=white"/>
+
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=Python&logoColor=white"/>
 
 **Tools**
