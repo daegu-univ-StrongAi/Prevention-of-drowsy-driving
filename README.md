@@ -13,4 +13,5 @@
 <img src="https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=Jupyter&logoColor=white"/> <img src="https://img.shields.io/badge/Google Colab-F9AB00?style=flat&logo=Google Colab&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/>
 
 
-
+**🦾 Model 🦾**
+<img src="https://img.shields.io/badge/YOLO-00FFFF?style=flat&logo=YOLO&logoColor=white"/>
