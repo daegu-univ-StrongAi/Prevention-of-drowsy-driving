@@ -1,0 +1,72 @@
+!git clone https://github.com/ultralytics/yolov5.git
+
+
+
+
+from tensorflow.python.client import device_lib
+device_lib.list_local_devices()
+
+
+
+
+!pip install roboflow
+
+from roboflow import Roboflow
+rf = Roboflow(api_key="KvU631dTek8TvQnVRP4F")
+project = rf.workspace("joseph-nelson").project("mask-wearing")
+dataset = project.version(18).download("yolov5")
+
+
+
+
+!pip install -qr /content/yolov5/requirements.txt
+
+
+
+
+import torch
+from IPython.display import Image, clear_output
+from PIL import Image as img
+print(img.open('/content/Mask-Wearing-18/test/images/1224331650_g_400-w_g_jpg.rf.b65116c04ba5dd6e9f40d1b8889e06f2.jpg'))
+
+
+
+
+from glob import glob
+
+train_img_list = glob('/content/Mask-Wearing-18/train/images/*.jpg')
+test_img_list = glob('/content/Mask-Wearing-18/test/images/*.jpg')
+valid_img_list = glob('/content/Mask-Wearing-18/valid/images/*.jpg')
+
+print(train_img_list)
+print(test_img_list)
+print(valid_img_list)
+
+
+
+%mkdir /content/mask-data
+
+
+
+%cp /content/yolov5/models/yolov5s.yaml /content/yolov5/models/custom_yolov5s.yaml
+
+
+
+%cd /content/yolov5/
+
+
+
+
+%%time
+!python train.py --img 416 --batch 32 --epochs 20 --data /content/yolov5/Mask-Wearing-18/data.yaml --cfg /content/yolov5/models/custom_yolov5s.yaml --weight '' --name mask_result --cache
+
+
+
+
+
+!python val.py --weight runs/train/mask_result/weights/best.pt --data Mask-Wearing-18/data.yaml --img 416 --iou 0.6
+
+
+
+
+!python detect.py --weight runs/train/mask_result/weights/best.pt --img 416 --conf 0.4 --save-txt --source
