@@ -1,0 +1,38 @@
+# 커스텀 데이터셋 
+
+
+%cd /content
+
+
+%mkdir datasets
+
+
+%cd /content/datasets
+
+
+!curl -L "       " > roboflow.zip; unzip roboflow.zip; rm roboflow.zip
+
+
+
+
+
+#train과 val, test dataset 경로 및 class 갯수와 이름 파악
+
+
+/content/datasets/data.yaml
+
+
+
+
+
+# training
+
+
+%cd /content/yolov5
+
+
+
+
+# epoch, img size, Yolo model 설정
+
+!python train.py --img 416 --batch 16 --epochs 10 --data /content/datasets/data.yaml --cfg ./models/yolov5s.yaml --weights yolov5s.pt --name test1
